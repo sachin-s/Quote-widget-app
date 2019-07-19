@@ -10,22 +10,26 @@ let win;
 console.log("Running from main.js");
 function createWindow() {
     winone = new BrowserWindow({
-        webPreferences: {
-            nodeIntegration: true
-        }
+        height:150,width:500,frame:false,
+          webPreferences:{
+              nodeIntegration:true
+        },show:false
     });
     
     winone.loadURL(url.format({
-        pathname: path.join(__dirname, 'views/one.html'),
+        pathname: path.join(__dirname, 'views/index.html'),
         protocol: 'file',
         slashes: true
     }));
     
-
+    winone.webContents.openDevTools();
     
     winone.on('closed', () => {
         win = null;
     })
+    winone.on('ready-to-show',()=>{
+        winone.show();
+    });
    
 }
 app.on('ready', createWindow);
