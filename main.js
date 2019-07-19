@@ -10,35 +10,27 @@ let win;
 console.log("Running from main.js");
 function createWindow() {
     winone = new BrowserWindow({
-        webPreferences: {
-            nodeIntegration: true
-        }
+        height:150,width:500,frame:false,
+          webPreferences:{
+              nodeIntegration:true
+        },show:false
     });
-    wintwo = new BrowserWindow({
-        webPreferences: {
-            nodeIntegration: true
-        }
-    });
+    
     winone.loadURL(url.format({
-        pathname: path.join(__dirname, 'views/one.html'),
+        pathname: path.join(__dirname, 'views/index.html'),
         protocol: 'file',
         slashes: true
     }));
-    wintwo.loadURL(url.format({
-        pathname: path.join(__dirname, 'views/two.html'),
-        protocol: 'file',
-        slashes: true
-    }));
-
+    
     winone.webContents.openDevTools();
-    wintwo.webContents.openDevTools();
-
+    
     winone.on('closed', () => {
         win = null;
     })
-    wintwo.on('closed', () => {
-        win = null;
-    })
+    winone.on('ready-to-show',()=>{
+        winone.show();
+    });
+   
 }
 app.on('ready', createWindow);
 app.on('window-all-closed', () => {
