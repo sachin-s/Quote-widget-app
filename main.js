@@ -14,31 +14,19 @@ function createWindow() {
             nodeIntegration: true
         }
     });
-    wintwo = new BrowserWindow({
-        webPreferences: {
-            nodeIntegration: true
-        }
-    });
+    
     winone.loadURL(url.format({
         pathname: path.join(__dirname, 'views/one.html'),
         protocol: 'file',
         slashes: true
     }));
-    wintwo.loadURL(url.format({
-        pathname: path.join(__dirname, 'views/two.html'),
-        protocol: 'file',
-        slashes: true
-    }));
+    
 
-    winone.webContents.openDevTools();
-    wintwo.webContents.openDevTools();
-
+    
     winone.on('closed', () => {
         win = null;
     })
-    wintwo.on('closed', () => {
-        win = null;
-    })
+   
 }
 app.on('ready', createWindow);
 app.on('window-all-closed', () => {
