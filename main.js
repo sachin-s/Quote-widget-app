@@ -4,13 +4,11 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const url = require("url");
 
-
-
 let win;
 console.log("Running from main.js");
 function createWindow() {
     winone = new BrowserWindow({
-        height:150,width:500,frame:false,
+        height:300,width:500,frame:false,
           webPreferences:{
               nodeIntegration:true
         },show:false
@@ -22,7 +20,7 @@ function createWindow() {
         slashes: true
     }));
     
-    winone.webContents.openDevTools();
+    //winone.webContents.openDevTools();
     
     winone.on('closed', () => {
         win = null;
@@ -32,6 +30,7 @@ function createWindow() {
     });
    
 }
+
 app.on('ready', createWindow);
 app.on('window-all-closed', () => {
     if (process.platform != 'dawin') {
