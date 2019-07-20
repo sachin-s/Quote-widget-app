@@ -1,5 +1,8 @@
+const electron = require('electron');
+const ipc = electron.ipcRenderer;
 let request = require('request');
 const changeBtn = document.getElementById('changeBtn');
+const exitBtn = document.getElementById('exitBtn');
 
 function myFunc(){
     var rnd = new Date().getTime();
@@ -18,4 +21,7 @@ changeBtn.addEventListener('click',function(){
     clearInterval(myTimer);
     myFunc();
     myTimer = setInterval(myFunc,10000)
-})
+});
+exitBtn.addEventListener('click',function(){
+    ipc.send('close-app');
+});

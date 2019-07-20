@@ -3,7 +3,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const url = require("url");
-
+const ipc = electron.ipcMain;
 let win;
 console.log("Running from main.js");
 function createWindow() {
@@ -43,3 +43,8 @@ app.on('activate', () => {
     }
 
 });
+ipc.on('close-app',()=>{
+    if (process.platform != 'dawin') {
+        app.quit()
+    }
+})
