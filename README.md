@@ -1,4 +1,3 @@
-
 Random Quote displaying app using rest api services
 
 About:
