@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie-edge">
-        <link rel="stylesheet" href="../styles.css">
-        <title>Quote widget</title>
-    </head>
-    <body>
-        <div id="quote">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel='stylesheet' href='../node_modules/bootstrap/dist/css/bootstrap.css' />
+    <link rel="stylesheet" href="../styles.css">
+    <title>Quote widget</title>
+</head>
+
+<body>
+        <nav class="navbar navbar-dark bg-dark">
+                <a class="navbar-brand w-100 h-100" href="#">Quote</a>
+        </nav>
+    <div class="container p-3">  
+        
+        <div class="row">
+            <div class="col-1"></div>
+            <div id="quote" class="col-9">
+
+            </div>
+            <div class="col-1"></div>
         </div>
-        <script>
-            require('../index.js');
-        </script>
-    </body>
+        
+            <nav class="navbar fixed-bottom p-3">
+                    <div class="mx-auto">
+                                <button id="changeBtn" class="btn btn-dark">Change quote</button>
+                        </div>
+                  </nav>
+    </div>
+
+
+    <script>
+        require('../index.js');
+    </script>
+</body>
+
 </html>
