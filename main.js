@@ -64,6 +64,19 @@ app.on('ready', function(){
                 }
             }
         ]
+    },{
+        label:'Edit',
+        submenu:[
+            {role:'undo'},
+            {role:'redo'},
+            {type:'separator'},
+            {role:'copy'},
+            {role:'cut'},
+            {role:'paste'},
+            {role:'pasteandmatchstyle'},
+            {role:'delete'},
+            {role:'selectall'}
+        ]
     }
    
 ]
