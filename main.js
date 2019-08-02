@@ -12,7 +12,7 @@ let winone;
 console.log("Running from main.js");
 function createWindow() {
     winone = new BrowserWindow({
-        //height:300,width:500,frame:false,
+        height:300,width:500,frame:false,
           webPreferences:{
               nodeIntegration:true
         },show:false
