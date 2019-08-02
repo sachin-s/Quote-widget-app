@@ -5,7 +5,8 @@ const path = require("path");
 const url = require("url");
 const ipc = electron.ipcMain;
 const Menu = electron.Menu;
-let win;
+const MenuItem = electron.MenuItem;
+let winone;
 console.log("Running from main.js");
 function createWindow() {
     winone = new BrowserWindow({
@@ -21,7 +22,7 @@ function createWindow() {
         slashes: true
     }));
     
-    //winone.webContents.openDevTools();
+    winone.webContents.openDevTools();
     
     winone.on('closed', () => {
         win = null;
@@ -29,7 +30,6 @@ function createWindow() {
     winone.on('ready-to-show',()=>{
         winone.show();
     });
-   
 }
 
 app.on('ready', function(){
@@ -82,6 +82,17 @@ app.on('ready', function(){
 ]
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
+
+    const ctxMenu = new Menu();
+    ctxMenu.append(new MenuItem({
+        label:'Hello',
+        click:function(){
+            console.log('clicked hello button');
+        }
+    }));
+    winone.webContents.on('context-menu',function(e,params){
+        ctxMenu.popup(winone,params.x,params.y);
+    });
 });
 app.on('window-all-closed', () => {
     if (process.platform != 'dawin') {
