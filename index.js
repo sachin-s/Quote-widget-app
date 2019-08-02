@@ -4,6 +4,7 @@ let request = require('request');
 const changeBtn = document.getElementById('changeBtn');
 const exitBtn = document.getElementById('exitBtn');
 
+
 function myFunc(){
     var rnd = new Date().getTime();
     var url ="https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_="+rnd;

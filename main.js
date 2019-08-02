@@ -7,6 +7,7 @@ const ipc = electron.ipcMain;
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
 const globalShortcut = electron.globalShortcut;
+const shell = electron.shell;
 let winone;
 console.log("Running from main.js");
 function createWindow() {
@@ -125,6 +126,7 @@ app.on('activate', () => {
 });
 app.on('will-quit',()=>{
     globalShortcut.unregisterAll();
+    shell.beep();
 })
 ipc.on('close-app',()=>{
     if (process.platform != 'dawin') {
