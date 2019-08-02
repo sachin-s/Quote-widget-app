@@ -6,6 +6,7 @@ const url = require("url");
 const ipc = electron.ipcMain;
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
+const globalShortcut = electron.globalShortcut;
 let winone;
 console.log("Running from main.js");
 function createWindow() {
@@ -30,6 +31,9 @@ function createWindow() {
     winone.on('ready-to-show',()=>{
         winone.show();
     });
+    globalShortcut.register('Alt+1',function(){
+        winone.show();
+    })
 }
 
 app.on('ready', function(){
@@ -55,7 +59,7 @@ app.on('ready', function(){
                 label:'help',
                 click:function(){
                     electron.shell.openExternal('https://electronjs.org/');
-                }
+                },accelerator:'CmdorCtrl + Shift + H'
             },
             {
                 label:'exit',
@@ -119,6 +123,9 @@ app.on('activate', () => {
     }
 
 });
+app.on('will-quit',()=>{
+    globalShortcut.unregisterAll();
+})
 ipc.on('close-app',()=>{
     if (process.platform != 'dawin') {
         app.quit()
