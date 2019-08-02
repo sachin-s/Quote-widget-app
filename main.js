@@ -22,7 +22,7 @@ function createWindow() {
         slashes: true
     }));
     
-    winone.webContents.openDevTools();
+    //winone.webContents.openDevTools();
     
     winone.on('closed', () => {
         win = null;
@@ -86,10 +86,24 @@ app.on('ready', function(){
     const ctxMenu = new Menu();
     ctxMenu.append(new MenuItem({
         label:'Hello',
-        click:function(){
-            console.log('clicked hello button');
+        submenu:[{
+            label:'submenu1',
+            click:function(){
+                console.log('clicked submenu1');
+            }
+        },
+        {
+            label:'submenu2',
+            click:function(){
+                console.log('clicked submenu2');
+            }
         }
+    ]
     }));
+    ctxMenu.append(new MenuItem({role:'copy'}));
+    ctxMenu.append(new MenuItem({role:'cut'}));
+    ctxMenu.append(new MenuItem({role:'paste'}));
+    ctxMenu.append(new MenuItem({role:'selectall'}));
     winone.webContents.on('context-menu',function(e,params){
         ctxMenu.popup(winone,params.x,params.y);
     });
