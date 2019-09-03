@@ -7,7 +7,8 @@ const exitBtn = document.getElementById('exitBtn');
 
 function myFunc(){
     var rnd = new Date().getTime();
-    var url ="https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_="+rnd;
+    var url ="https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand&_="+rnd;
+    //var url = "https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand";
     request(url,function(err,response,body){
     if(err)
     {
@@ -15,7 +16,8 @@ function myFunc(){
         return;
     }
     let bodyJson = JSON.parse(body);
-    let randomQuote = bodyJson[0]["content"];
+    console.log(bodyJson);
+    let randomQuote = bodyJson[0]["content"]["rendered"];
     document.getElementById("quote").innerHTML = randomQuote;
     
 
