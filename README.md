@@ -1,6 +1,8 @@
 Random Quote displaying app using rest api services
 
 Screenshot of the app:
+
+
 ![screenshot](https://user-images.githubusercontent.com/13571862/67684205-bbb4d580-f9b8-11e9-8679-343be28901ff.jpg)
 
 About:
