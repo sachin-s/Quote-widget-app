@@ -1,8 +1,7 @@
+
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 let request = require('request');
-const changeBtn = document.getElementById('changeBtn');
-const exitBtn = document.getElementById('exitBtn');
 
 
 function myFunc(){
@@ -24,6 +23,11 @@ function myFunc(){
 });
 
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+
+const changeBtn = document.getElementById('changeBtn');
+const exitBtn = document.getElementById('exitBtn');
 myFunc();
 var myTimer = setInterval(myFunc,10000)
 changeBtn.addEventListener('click',function(){
@@ -34,3 +38,4 @@ changeBtn.addEventListener('click',function(){
 exitBtn.addEventListener('click',function(){
     ipc.send('close-app');
 });
+})
