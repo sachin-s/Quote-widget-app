@@ -1,4 +1,4 @@
-# Ignore the node_modules directory
+# Ignore the node_modules directory /removed
 node_modules/
 
 # Ignore Logs
